@@ -11,7 +11,9 @@ if (number1 == number2)
 {
     Console.WriteLine($"Число number1 {number1} = числу number2 {number2}");
 }
-if (number1 >= number2)
+else 
+{
+if (number1 > number2)
 {
     Console.WriteLine("Максимальное число max=" + number1);
 }
@@ -19,3 +21,5 @@ else
 {
     Console.WriteLine("Максимальное число max=" + number2);
 }
+}
+Console.Read();
