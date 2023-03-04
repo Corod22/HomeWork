@@ -10,71 +10,46 @@ int num = number;
 int result = 0;
 int a = 0;
 
-int digits = 0; 
-int number2=number;
-while (number2 > 0)
-{
-  number2 = number2/10;
-  digits++;
-}
-int dig = ((int)Math.Pow(10, digits))/10;
+int dig2 = Counter(number);
 
-    while (dig>0)
-    {
-    a = num % 10;
-    num = num / 10;
-    result = result + a * dig;
-    dig=dig/10;
-    }
-    if (number==result)
-    {
-        Console.WriteLine($"Число {number}-> да, палидром ");
-    }
-    else 
-    {
-        Console.WriteLine($"Число {number} -> нет, не палидром");
-    }
+PalinDrome(dig2);
 
+Console.WriteLine(Сonclusion(number, result) ? "Да": "Нет");
 
 Console.Read();
-// Console.WriteLine("Введите пятизначное число");
-// int number = Convert.ToInt32(Console.ReadLine());
-// int num = number;
-// int result = 0;
-// int a = 0;
-// if (num < 100000)
-// {
-//     a = num % 10;
-//     num = num / 10;
-//     result = result + a * 10000;
 
 
-//     a = num % 10;
-//     num = num / 10;
-//     result = result + a * 1000;
 
-//     a = num % 10;
-//     num = num / 10;
-//     result = result + a * 100;
-
-//     a = num % 10;
-//     num = num / 10;
-//     result = result + a*10;
-
-//     a = num % 10;
-//     num = num / 10;
-//     result = result + a;
-
-//     Console.WriteLine($"Палидром числа {number} - > {result}");
-
-// }
-// else
-// {
-//     Console.WriteLine("Введите пятизначное число");
-// }
+int Counter(int numm)
+{
+    int digits = 0;
+    int number2 = numm;
+    while (number2 > 0)
+    {
+        number2 = number2 / 10;
+        digits++;
+    }
+    int dig = ((int)Math.Pow(10, digits)) / 10;
+    return dig;
+}
 
 
-// Console.Read();
+int PalinDrome(int dig3)
+{
+    while (dig3 > 0)
+    {
+        a = num % 10;
+        num = num / 10;
+        result = result + a * dig3;
+        dig3 = dig3 / 10;
+    }
+    return result;
+}
+
+bool Сonclusion(int number4, int result4)
+{
+  return number4==result4;
+}
 
 
 
