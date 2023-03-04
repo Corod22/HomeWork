@@ -8,7 +8,6 @@ Console.WriteLine("Введите число");
 int number = Convert.ToInt32(Console.ReadLine());
 int num = number;
 int result = 0;
-int a = 0;
 
 int dig2 = Counter(number);
 
@@ -36,6 +35,7 @@ int Counter(int numm)
 
 int PalinDrome(int dig3)
 {
+    int a = 0;
     while (dig3 > 0)
     {
         a = num % 10;
