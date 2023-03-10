@@ -4,10 +4,9 @@
 // [345, 897, 568, 234] -> 2
 
 Console.WriteLine("Введите размерность массива");
-int n=Convert.ToInt32(Console.ReadLine());
+int n = Convert.ToInt32(Console.ReadLine());
 
 int[] array = new int[n];
-
 void FillArray(int[] arr)
 {
     for (int i = 0; i < arr.Length; i++)
@@ -18,13 +17,13 @@ void FillArray(int[] arr)
 }
 void PositiveNumber(int[] arr)
 {
-    int quantityPositiveNumber=0;
-    for (int i = 0; i < arr.Length ; i++)
+    int quantityPositiveNumber = 0;
+    for (int i = 0; i < arr.Length; i++)
     {
-       if (arr[i]%2==0)
-       {
-          quantityPositiveNumber++;
-       } 
+        if (arr[i] % 2 == 0)
+        {
+            quantityPositiveNumber++;
+        }
     }
     Console.Write($" Чётных чисел в массиве->{quantityPositiveNumber}");
 }
@@ -34,14 +33,12 @@ void PrintArray(int[] arr)
     Console.Write("[");
     for (int i = 0; i < count; i++)
     {
-        Console.Write($"{arr[i] }");
-        if (i<count-1) Console.Write(", "); 
+        Console.Write($"{arr[i]}");
+        if (i < count - 1) Console.Write(", ");
     }
     Console.Write("]");
 }
-
 FillArray(array);
 PrintArray(array);
 PositiveNumber(array);
-//Console.Write($"Чётных чисел в массиве->{quantityPositiveNumber}");
 Console.Read();
