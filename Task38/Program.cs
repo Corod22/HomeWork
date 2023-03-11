@@ -10,7 +10,7 @@ void FillArray(double[] arr)
 {
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = Math.Round(new Random().Next(0, 100) + new Random().NextDouble(), 2);
+        arr[i] = Math.Round(new Random().Next(0, 10) + new Random().NextDouble(), 2);
     }
 }
 double MaxElementArray(double[] arr)
