@@ -1,96 +1,68 @@
-﻿// Задача 19 Напишите программу, которая принимает на вход пятизначное число и проверяет, 
-// является ли оно палиндромом.
+﻿// Задача 52. Задайте двумерный массив из целых чисел. 
+// Найдите среднее арифметическое элементов в каждом столбце.
 
-// 14212->нет
-// 12821->да
-// 23432->да
-Console.WriteLine("Введите число");
-int number = Convert.ToInt32(Console.ReadLine());
-int num = number;
-int result = 0;
-int a = 0;
-
-int dig2 = Counter(number);
-
-PalinDrome(dig2);
-
-Console.WriteLine(Сonclusion(number, result) ? "Да": "Нет");
-
-Console.Read();
-
-
-
-int Counter(int numm)
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
 {
-    int digits = 0;
-    int number2 = numm;
-    while (number2 > 0)
+    int[,] matrix = new int[rows, columns]; // 0, 1
+    Random rnd = new Random();
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        number2 = number2 / 10;
-        digits++;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = rnd.Next(min, max + 1);
+        }
     }
-    int dig = ((int)Math.Pow(10, digits)) / 10;
-    return dig;
+    return matrix;
 }
-
-
-int PalinDrome(int dig3)
+void PrintMatrix(int[,] matrix)
 {
-    while (dig3 > 0)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        a = num % 10;
-        num = num / 10;
-        result = result + a * dig3;
-        dig3 = dig3 / 10;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write($"{matrix[i, j],4} ");
+        }
+        Console.WriteLine();
     }
-    return result;
 }
 
-bool Сonclusion(int number4, int result4)
+int AverageMeaning(int[,] matrix)
 {
-  return number4==result4;
+   int averageMeaning = 0;
+    int avrg = 0;
+    int[] array = new int[matrix.GetLength(1)];
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            averageMeaning = averageMeaning + matrix[i, j];
+        }
+        avrg =  averageMeaning;
+       // avrg = Math.Round(averageMeaning / matrix.GetLength(0), 1);
+       // Console.Write($"{avrg}   ");
+        array[j] =avrg;
+    }
+    return array;
 }
-
-// if (number == result)
-// {
-//     Console.WriteLine($"Число {number} является палиндромом?-> да ");
-// }
-// else
-// {
-//     Console.WriteLine($"Число {number} является палиндромом?-> нет");
-// }
-
-
-// Console.WriteLine("Введите число");
-// int number = Convert.ToInt32(Console.ReadLine());
-// int num = number;
-// int result = 0;
-// int a = 0;
-
-// int digits = 0; 
-// int number2=number;
-// while (number2 > 0)
-// {
-//   number2 = number2/10;
-//   digits++;
-// }
-// int dig = ((int)Math.Pow(10, digits))/10;
-
-//     while (dig>0)
-//     {
-//     a = num % 10;
-//     num = num / 10;
-//     result = result + a * dig;
-//     dig=dig/10;
-//     }
-//     if (number==result)
-//     {
-//         Console.WriteLine($"Число {number}-> да, палидром ");
-//     }
-//     else 
-//     {
-//         Console.WriteLine($"Число {number} -> нет, не палидром");
-//     }
-
-
-// Console.Read();
+void PrintArray(int[] arr)
+{
+    int count = arr.Length;
+    Console.Write("[");
+    for (int i = 0; i < count; i++)
+    {
+        Console.Write($"{arr[i]}");
+        if (i < count - 1) Console.Write(", ");
+    }
+    Console.Write("]");
+}
+int[,] array2d = CreateMatrixRndInt(3, 4, 0, 10);
+PrintMatrix(array2d);
+// AverageMeaning(array2d);
+int[] array = AverageMeaning(array2d);
+PrintArray(array);
