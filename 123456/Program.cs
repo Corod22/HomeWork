@@ -32,37 +32,37 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int AverageMeaning(int[,] matrix)
-{
-   int averageMeaning = 0;
-    int avrg = 0;
-    int[] array = new int[matrix.GetLength(1)];
+double[] AverageMeaning(int[,] matrix)
+{   
+    double avrg = 0;
+    double[] array = new double[matrix.GetLength(1)];
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
+        double averageMeaning = 0;
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             averageMeaning = averageMeaning + matrix[i, j];
         }
-        avrg =  averageMeaning;
-       // avrg = Math.Round(averageMeaning / matrix.GetLength(0), 1);
-       // Console.Write($"{avrg}   ");
+        //avrg =  averageMeaning;
+        avrg = Math.Round(averageMeaning / matrix.GetLength(0), 2);
+        //Console.Write($"{avrg}   ");
         array[j] =avrg;
     }
     return array;
 }
-void PrintArray(int[] arr)
+void PrintArray(double[] arr)
 {
     int count = arr.Length;
     Console.Write("[");
     for (int i = 0; i < count; i++)
     {
         Console.Write($"{arr[i]}");
-        if (i < count - 1) Console.Write(", ");
+        if (i < count - 1) Console.Write("; ");
     }
     Console.Write("]");
 }
 int[,] array2d = CreateMatrixRndInt(3, 4, 0, 10);
 PrintMatrix(array2d);
 // AverageMeaning(array2d);
-int[] array = AverageMeaning(array2d);
+double[] array = AverageMeaning(array2d);
 PrintArray(array);
