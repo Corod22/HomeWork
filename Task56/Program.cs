@@ -46,17 +46,6 @@ int[] SummString(int[,] matrix)
     }
     return array;
 }
-void PrintArray(int[] arr)
-{
-    int count = arr.Length;
-    Console.Write("[");
-    for (int i = 0; i < count; i++)
-    {
-        Console.Write($"{arr[i]}");
-        if (i < count - 1) Console.Write(", ");
-    }
-    Console.Write("]");
-}
 int MinSummElement(int[] arr)
 {
     int a = arr[0];
@@ -83,9 +72,9 @@ void MinString(int[]arr, int minSum)
 int[,] array2d = CreateMatrixRndInt(4, 4, 0, 10);
 PrintMatrix(array2d);
 int[] summString = SummString(array2d);
-PrintArray(summString);
 int a=MinSummElement(summString);
 Console.WriteLine();
 MinString(summString,a);
+Console.ReadKey();
 
 
