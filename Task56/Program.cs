@@ -69,10 +69,9 @@ int MinSummElement(int[] arr)
     } 
     return a; 
 }
-int[] MinString(int[]arr, int minSum)
+void MinString(int[]arr, int minSum)
 {
     int[] array = new int[arr.Length];
-    //int count=0;
     for (int i = 0; i <arr.Length ; i++)
     {
         if (minSum==arr[i])
@@ -81,25 +80,11 @@ int[] MinString(int[]arr, int minSum)
         }
     }
 }
-// void MinString(int[]arr, int minSum)
-// {
-//     //int count=0;
-//     for (int i = 0; i <arr.Length ; i++)
-//     {
-//         if (minSum==arr[i])
-//         {
-//           Console.WriteLine($"Строка с наименьшей суммой элементов {i+1}");       
-//         }
-//     }
-// }
-
 int[,] array2d = CreateMatrixRndInt(4, 4, 0, 10);
 PrintMatrix(array2d);
 int[] summString = SummString(array2d);
 PrintArray(summString);
 int a=MinSummElement(summString);
-//Console.WriteLine($"Строка с наименьшец суммой {a}");
-//MinSummElement(summString);
 Console.WriteLine();
 MinString(summString,a);
 
