@@ -33,21 +33,21 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine();
     }
 }
-int[,] StreamlineMatrix (int[,] arr)
+int[,] StreamlineMatrix(int[,] arr)
 {
-     for (int i = 0; i < arr.GetLength(0); i++)
-    {   
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
         for (int j = 1; j < arr.GetLength(1); j++)
         {
-          for (int k = 0; k < arr.GetLength(0)-1 ; k++)
-          {
-            if (arr[i, k] < arr[i, k + 1])
+            for (int k = 0; k < arr.GetLength(0) - 1; k++)
             {
-                int temp = arr[i, k + 1];
-                arr[i, k + 1] = arr[i, k];
-                arr[i, k] = temp;
+                if (arr[i, k] < arr[i, k + 1])
+                {
+                    int temp = arr[i, k + 1];
+                    arr[i, k + 1] = arr[i, k];
+                    arr[i, k] = temp;
+                }
             }
-          }
         }
     }
     return arr;
@@ -55,7 +55,7 @@ int[,] StreamlineMatrix (int[,] arr)
 int[,] array2d = CreateMatrixRndInt(4, 4, 0, 10);
 PrintMatrix(array2d);
 Console.WriteLine();
-int[,] array2d2=StreamlineMatrix (array2d);
-PrintMatrix(array2d2);
+int[,] modArray2d = StreamlineMatrix(array2d);
+PrintMatrix(modArray2d);
 Console.ReadKey();
 
