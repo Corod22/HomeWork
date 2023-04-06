@@ -27,37 +27,5 @@ else
 }
 Console.ReadKey();
 
-// int[] NumberNatural(int num)
-// {
-//     int[] array = new int[num];
-//     array[0] = num;
-//     int count=num;
-//     for (int i = 1; i <count; i++)
-//     {
-//         array[i] = array[i-1]-1;
-//     }
-//     return array;
-// }
 
-// void PrintArray(int[] arr)
-// {
-//     int count = arr.Length;
-//     Console.Write("[");
-//     for (int i = 0; i < count; i++)
-//     {
-//         Console.Write($"{arr[i]}");
-//         if (i < count - 1) Console.Write(", ");
-//     }
-//     Console.Write("]");
-// }
-// int number = Number();
-// if (number >0)
-// {
-// int[] numberNatural = NumberNatural(number);
-// PrintArray(numberNatural);
-// }
-// else 
-// {
-//     Console.WriteLine("Ввели не натуральное число");
-// }
 
