@@ -1,68 +1,77 @@
-﻿// Задача 52. Задайте двумерный массив из целых чисел. 
-// Найдите среднее арифметическое элементов в каждом столбце.
+﻿// Задача 66: Задайте значения M и N. Напишите программу, 
+// которая найдёт сумму натуральных элементов в промежутке от M до N. Выполнить с помощью рекурсии.
 
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
-int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
+int NumberM()
 {
-    int[,] matrix = new int[rows, columns]; // 0, 1
-    Random rnd = new Random();
-
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            matrix[i, j] = rnd.Next(min, max + 1);
-        }
-    }
-    return matrix;
+    Console.WriteLine("Введите натуральное число M");
+    int num = Convert.ToInt32(Console.ReadLine());
+    return num;
 }
-void PrintMatrix(int[,] matrix)
+int NumberN()
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            Console.Write($"{matrix[i, j],4} ");
-        }
-        Console.WriteLine();
-    }
+    Console.WriteLine("Введите натуральное число N");
+    int num = Convert.ToInt32(Console.ReadLine());
+    return num;
 }
-
-double[] AverageMeaning(int[,] matrix)
-{   
-    double avrg = 0;
-    double[] array = new double[matrix.GetLength(1)];
-    for (int j = 0; j < matrix.GetLength(1); j++)
+int[] ArraySum(int s1, int s2)
+{
+    int n = 0;
+    if (s1 > s2)
     {
-        double averageMeaning = 0;
-        for (int i = 0; i < matrix.GetLength(0); i++)
-        {
-            averageMeaning = averageMeaning + matrix[i, j];
-        }
-        //avrg =  averageMeaning;
-        avrg = Math.Round(averageMeaning / matrix.GetLength(0), 2);
-        //Console.Write($"{avrg}   ");
-        array[j] =avrg;
+        n = s1 - s2 + 1;
+    }
+    else
+    {
+        n = s2 - s1 + 1;
+    }
+    int[] array = new int[n];
+    array[0] = s1;
+    int count = s2 - s1;
+    for (int i = 1; i <= count; i++)
+    {
+        array[i] = array[i - 1] + 1;
     }
     return array;
 }
-void PrintArray(double[] arr)
+int NumberSum(int[] arr)
+{
+    int sum = 0;
+    int count = arr.Length;
+    for (int i = 0; i < count; i++)
+    {
+        sum = sum + arr[i];
+    }
+    return sum;
+
+}
+void PrintArray(int[] arr)
 {
     int count = arr.Length;
     Console.Write("[");
     for (int i = 0; i < count; i++)
     {
         Console.Write($"{arr[i]}");
-        if (i < count - 1) Console.Write("; ");
+        if (i < count - 1) Console.Write(", ");
     }
     Console.Write("]");
 }
-int[,] array2d = CreateMatrixRndInt(3, 4, 0, 10);
-PrintMatrix(array2d);
-// AverageMeaning(array2d);
-double[] array = AverageMeaning(array2d);
-PrintArray(array);
+int numberM = NumberM();
+int numberN = NumberN();
+if (numberN > numberM)
+{
+    int[] arraySum = ArraySum(numberM, numberN);
+    PrintArray(arraySum);
+    int sum = NumberSum(arraySum);
+    Console.WriteLine();
+    Console.WriteLine($"Сумма натуральных элементов в промежутке от {numberM} до {numberN} ->{sum}");
+}
+else
+{
+    int[] arraySum = ArraySum(numberN, numberM);
+    PrintArray(arraySum);
+    int sum = NumberSum(arraySum);
+    Console.WriteLine();
+    Console.WriteLine($"Сумма натуральных элементов в промежутке от {numberN} до {numberM} ->{sum}");
+}    
